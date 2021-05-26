@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react';
+import Formulario from './components/Formulario';
+import Home from './components/Home';
+
 
 function App() {
+
+  const[ingreso,guardarIngreso]=useState({
+    email:'',
+    password:'',
+  })
+  const[validacion,guardarValidacion] =useState(false);
+
+ 
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <div>
+     {!validacion ?  <Formulario
+     ingreso={ingreso}
+     guardarIngreso={guardarIngreso}
+     guardarValidacion={guardarValidacion}/>
+    :
+    <Home/>
+    }
+    
+   </div>
   );
 }
 
